@@ -34,8 +34,8 @@ export default (gameWorld) => {
     // Rectangles
     RightRec: Square(
       world,
-      "yellow",
-      { x: Constants.SCREEN_WIDTH - 30, y: 10 },
+      "gray",
+      { x: Constants.SCREEN_WIDTH - 10, y: 10 },
       {
         height: 40,
         width: 40,
@@ -54,30 +54,114 @@ export default (gameWorld) => {
       25
     ),
 
-    // Triangles
-    Test: Triangle(world, "yellow", { x: 80, y: 180 }, 3, 20, {
-      label: "poly",
-      chamfer: 0,
-    }),
+    // Wall
+    // Wall1: Wall(
+    //   world,
+    //   "green",
+    //   { x: 150, y: 150 },
+    //   { width: 100, height: 40 },
+    //   {
+    //     angle: 20,
+    //   }
+    // ),
 
     // Wall
-    Wall1: Wall(
+    WallExit: Square(
       world,
-      "green",
-      { x: 150, y: 150 },
-      { width: 100, height: 40 },
-      {
-        angle: 20,
-      }
+      "orange",
+      { x: Constants.SCREEN_WIDTH - 60, y: Constants.SCREEN_HEIGHT - 330 },
+      { width: 30, height: 800 },
+      { label: "wall-exit" }
     ),
 
-    // Drops (Left and Right)
-    DropLeft: RigidBody(world, "orange", { x: 180, y: 250 }, Paths.DROP_LEFT),
+    // Bottom Objects (Left and Right)
+    BottomRectRight: Square(
+      world,
+      "gray",
+      {
+        x: Constants.SCREEN_WIDTH - 135,
+        y: Constants.SCREEN_HEIGHT - 100,
+      },
+      { width: 120, height: 100 },
+      { label: "rect-bottom-right" }
+    ),
+    BottomRectLeft: Square(
+      world,
+      "gray",
+      {
+        x: 65,
+        y: Constants.SCREEN_HEIGHT - 100,
+      },
+      { width: 120, height: 100 },
+      { label: "rect-bottom-left" }
+    ),
+
+    // Bottom Sticks Right
+    BottomStickTallRight: Square(
+      world,
+      "gray",
+      { x: Constants.SCREEN_WIDTH - 100, y: Constants.SCREEN_HEIGHT - 200 },
+      { width: 10, height: 140 },
+      { label: "stick-right-tall" }
+    ),
+
+    BottomStickMediumRight: Square(
+      world,
+      "gray",
+      { x: Constants.SCREEN_WIDTH - 120, y: Constants.SCREEN_HEIGHT - 200 },
+      { width: 10, height: 100 },
+      { label: "stick-right-tall" }
+    ),
+    BottomStickShortRight: Square(
+      world,
+      "gray",
+      { x: Constants.SCREEN_WIDTH - 140, y: Constants.SCREEN_HEIGHT - 200 },
+      { width: 10, height: 60 },
+      { label: "stick-right-tall" }
+    ),
+    BottomStickShortestRight: Square(
+      world,
+      "gray",
+      { x: Constants.SCREEN_WIDTH - 160, y: Constants.SCREEN_HEIGHT - 200 },
+      { width: 10, height: 20 },
+      { label: "stick-right-tall" }
+    ),
+
+    // Bottom Sticks Left
+    BottomStickTallLeft: Square(
+      world,
+      "gray",
+      { x: 30, y: Constants.SCREEN_HEIGHT - 200 },
+      { width: 10, height: 140 },
+      { label: "stick-Left-tall" }
+    ),
+
+    BottomStickMediumLeft: Square(
+      world,
+      "gray",
+      { x: 50, y: Constants.SCREEN_HEIGHT - 200 },
+      { width: 10, height: 100 },
+      { label: "stick-Left-tall" }
+    ),
+    BottomStickShortLeft: Square(
+      world,
+      "gray",
+      { x: 70, y: Constants.SCREEN_HEIGHT - 200 },
+      { width: 10, height: 60 },
+      { label: "stick-Left-tall" }
+    ),
+    BottomStickShortestLeft: Square(
+      world,
+      "gray",
+      { x: 90, y: Constants.SCREEN_HEIGHT - 200 },
+      { width: 10, height: 20 },
+      { label: "stick-Left-tall" }
+    ),
 
     // Edges
     BoundaryB: Boundary(
       world,
-      "orange",
+      "gray",
       { x: Constants.WINDOW_WIDTH / 2, y: Constants.WINDOW_HEIGHT - 60 },
       { width: Constants.WINDOW_WIDTH, height: 20 },
       { isStatic: true, label: "BoundaryB" }
@@ -85,7 +169,7 @@ export default (gameWorld) => {
 
     BoundaryL: Boundary(
       world,
-      "orange",
+      "gray",
       { x: 0, y: Constants.SCREEN_WIDTH },
       { width: 20, height: Constants.SCREEN_WIDTH * 2.5 },
       { isStatic: true, label: "BoundaryL" }
@@ -93,7 +177,7 @@ export default (gameWorld) => {
 
     BoundaryR: Boundary(
       world,
-      "orange",
+      "gray",
       { x: Constants.SCREEN_WIDTH, y: Constants.SCREEN_WIDTH },
       { width: 20, height: Constants.SCREEN_WIDTH * 2.5 },
       { isStatic: true, label: "BoundaryR" }
@@ -101,7 +185,7 @@ export default (gameWorld) => {
 
     BoundaryT: Boundary(
       world,
-      "orange",
+      "gray",
       { x: Constants.WINDOW_WIDTH / 2, y: 0 },
       { height: 20, width: Constants.WINDOW_WIDTH },
       { label: "BoundaryT" }

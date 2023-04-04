@@ -26,6 +26,7 @@ const Ball = (props) => {
 export default (world, color, pos, radius, extraOptions) => {
   const theCircle = Matter.Bodies.circle(pos.x, pos.y, radius, {
     label: extraOptions.label,
+    restitution: 0.5,
     collisionFilter: {
       // group: stopperGroup,
     },

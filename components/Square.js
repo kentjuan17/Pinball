@@ -19,6 +19,7 @@ const Square = (props) => {
         width: width,
         height: height,
         backgroundColor: props.color,
+        // transform: [{ rotate: "45deg" }],
       }}
     />
   );
