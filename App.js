@@ -5,102 +5,29 @@ import entities from "./entities";
 import Physics from "./Physics";
 import React, { useEffect, useState } from "react";
 import Constants from "./Constants";
+import Images from "./Images";
 
 export default function App() {
-  const [gameEngine, setGameEngine] = useState(null);
   const [running, setRunning] = useState(false);
-  const [score, setScore] = useState(0);
-
   useEffect(() => {
     setRunning(true);
   }, []);
 
   return (
     <View style={styles.container}>
-      <Image source={""} style={styles.backgroundImage} resizeMode="stretch" />
-
+      <Image
+        source={Images.Background}
+        style={styles.backgroundImage}
+        resizeMode="stretch"
+      />
       <GameEngine
-        ref={(ref) => {
-          setGameEngine(ref);
-        }}
-        entities={entities()}
         systems={[Physics]}
+        entities={entities()}
         running={running}
-        // onEvent={(e) => {
-        //   if (e.type === "gameOver") {
-        //     setRunning(false);
-        //   }
-        //   if (e.type === "updateScore") {
-        //     setScore(score + 1);
-        //   }
-        // }}
         style={styles.gameContainer}
       >
-        <StatusBar style="auto" hidden={true} />
+        {<StatusBar style="auto" hidden={true} />}
       </GameEngine>
-
-      {/* Score */}
-      <Text
-        style={{
-          textAlign: "center",
-          fontSize: 20,
-          fontWeight: "bold",
-          position: "absolute",
-          left: 10,
-          top: 10,
-          backgroundColor: "orange",
-          padding: 10,
-        }}
-      >
-        Score: {score}
-      </Text>
-
-      {!running ? (
-        <View
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        >
-          <TouchableOpacity
-            onPress={() => {
-              setScore(0);
-              setRunning(true);
-              gameEngine.swap(entities());
-            }}
-          >
-            <Image
-              source={""}
-              style={{
-                flex: 2,
-                justifyContent: "center",
-                width: Constants.SCREEN_WIDTH,
-                height: Constants.SCREEN_HEIGHT,
-              }}
-            />
-          </TouchableOpacity>
-        </View>
-      ) : null}
-
-      {/* Buttons */}
-      <View style={styles.controlRow}>
-        <TouchableOpacity
-          onPress={() => {
-            gameEngine.dispatch({ type: "move-left" });
-          }}
-        >
-          <View style={styles.control}>
-            <Text style={styles.centerText}>Tap</Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => {
-            gameEngine.dispatch({ type: "move-right" });
-          }}
-        >
-          <View style={styles.control}>
-            <Text style={styles.centerText}>Tap</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 }

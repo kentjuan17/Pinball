@@ -1,6 +1,5 @@
-import { View, Image } from "react-native";
+import { View } from "react-native";
 import Matter from "matter-js";
-//import Images from "../Images";
 
 const Stopper = (props) => {
   const width = props.radius * 2;
@@ -9,7 +8,7 @@ const Stopper = (props) => {
   const y = props.body.position.y - width / 2;
 
   return (
-    <Image
+    <View
       style={{
         width: width,
         height: width,
@@ -19,9 +18,9 @@ const Stopper = (props) => {
         //transform: [{ rotate: angle }],
         position: "absolute",
         borderRadius: props.radius,
+        backgroundColor: props.color,
       }}
       resizeMode="stretch"
-      source={props.extraOptions.image}
     />
   );
 };

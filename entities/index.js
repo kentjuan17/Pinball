@@ -7,16 +7,19 @@ import RigidBody from "../components/RigidBody";
 import Paths from "../Paths";
 import Poly from "../Poly";
 import Bumper from "../components/Bumper";
+import Triangle from "../components/Triangle";
+import Square from "../components/Square";
+import Wall from "../components/Wall";
 
 export default (gameWorld) => {
   let engine = Matter.Engine.create({ enableSleeping: false });
   let world = engine.world;
-  engine.gravity.y = 0.001;
+  engine.gravity.y = 0.5;
 
   return {
     physics: { engine, world },
 
-    // Dome: RigidBody(world, "blue", { x: 239, y: 86 }, Paths.DOME),
+    Dome: RigidBody(world, "", { x: 239, y: 86 }, Paths.DOME),
 
     Pinball: Ball(
       world,
@@ -25,6 +28,20 @@ export default (gameWorld) => {
       14,
       {
         label: "pinball",
+      }
+    ),
+
+    // Rectangles
+    RightRec: Square(
+      world,
+      "yellow",
+      { x: Constants.SCREEN_WIDTH - 30, y: 10 },
+      {
+        height: 40,
+        width: 40,
+      },
+      {
+        label: "rightRec",
       }
     ),
 
@@ -37,11 +54,32 @@ export default (gameWorld) => {
       25
     ),
 
+    // Triangles
+    Test: Triangle(world, "yellow", { x: 80, y: 180 }, 3, 20, {
+      label: "poly",
+      chamfer: 0,
+    }),
+
+    // Wall
+    Wall1: Wall(
+      world,
+      "green",
+      { x: 150, y: 150 },
+      { width: 100, height: 40 },
+      {
+        angle: 20,
+      }
+    ),
+
+    // Drops (Left and Right)
+    DropLeft: RigidBody(world, "orange", { x: 180, y: 250 }, Paths.DROP_LEFT),
+
+    // Edges
     BoundaryB: Boundary(
       world,
       "orange",
-      { x: Constants.WINDOW_WIDTH / 2, y: Constants.WINDOW_HEIGHT / 1.12 },
-      { width: Constants.WINDOW_WIDTH, height: 10 },
+      { x: Constants.WINDOW_WIDTH / 2, y: Constants.WINDOW_HEIGHT - 60 },
+      { width: Constants.WINDOW_WIDTH, height: 20 },
       { isStatic: true, label: "BoundaryB" }
     ),
 

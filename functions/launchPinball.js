@@ -9,7 +9,7 @@ export default function launchPinball(pinball) {
   });
   Matter.Body.setVelocity(pinball, {
     x: 0,
-    y: -25 + randomBetween(-60, 2),
+    y: -25 + randomBetween(-30, 2),
   });
   Matter.Body.setAngularVelocity(pinball, 0);
 }

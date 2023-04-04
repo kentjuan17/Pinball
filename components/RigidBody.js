@@ -2,7 +2,6 @@ import Matter from "matter-js";
 import React from "react";
 import { Dimensions, View } from "react-native";
 import Color from "./../Color";
-import Poly from "../Poly";
 
 const RigidBody = (props) => {
   const width = props.body.bounds.max.x - props.body.bounds.min.x;
@@ -30,7 +29,7 @@ export default (world, color, pos, path, extraOptions) => {
   const rigidBody = Matter.Bodies.fromVertices(pos.x, pos.y, vertices, {
     isStatic: true,
     render: {
-      fillStyle: Color.OUTER,
+      fillStyle: "yellow",
 
       // add stroke and line width to fill gaps
       strokeStyle: Color.OUTER,
