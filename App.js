@@ -29,6 +29,9 @@ export default function App() {
         entities={entities()}
         running={running}
         onEvent={(e) => {
+          if (e.type === "gameOver") {
+            setRunning(false);
+          }
           if (e.type === "updateScore") {
             setScore(score + 10);
           }

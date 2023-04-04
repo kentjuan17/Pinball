@@ -89,6 +89,22 @@ export default (gameWorld) => {
     ),
 
     // Bottom Sticks Right
+    SquareStopperRight: Square(
+      world,
+      "gray",
+      {
+        x: Constants.SCREEN_WIDTH - 80,
+        y: Constants.SCREEN_HEIGHT - 280,
+      },
+      {
+        width: 10,
+        height: 10,
+      },
+      {
+        label: "stopper-right",
+      }
+    ),
+
     BottomStickTallRight: Square(
       world,
       "gray",
@@ -120,6 +136,21 @@ export default (gameWorld) => {
     ),
 
     // Bottom Sticks Left
+    SquareStopperLeft: Square(
+      world,
+      "gray",
+      {
+        x: 14,
+        y: Constants.SCREEN_HEIGHT - 280,
+      },
+      {
+        width: 10,
+        height: 10,
+      },
+      {
+        label: "stopper-right",
+      }
+    ),
     BottomStickTallLeft: Square(
       world,
       "gray",

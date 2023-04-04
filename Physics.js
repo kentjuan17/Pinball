@@ -26,7 +26,7 @@ const Physics = (entities, { touches, events, dispatch, time }) => {
     let objALabel = pairs[0].bodyA.label;
     let objBLabel = pairs[0].bodyB.label;
 
-    console.log("A:", objALabel, "B:", objBLabel);
+    // console.log("A:", objALabel, "B:", objBLabel);
 
     if (objALabel === "pinball" && objBLabel === "bumper") {
       objB.render.fillStyle = "white";
@@ -35,6 +35,7 @@ const Physics = (entities, { touches, events, dispatch, time }) => {
 
     if (objALabel === "pinball" && objBLabel === "BoundaryB") {
       console.log("GameOver. should prompt reset");
+      launchPinball(entities.Pinball.body);
     }
   });
 
