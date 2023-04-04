@@ -19,6 +19,25 @@ const Physics = (entities, { touches, events, dispatch, time }) => {
     }
   }
 
+  Matter.Events.on(engine, "collisionStart", (event) => {
+    let pairs = event.pairs;
+    let objA = pairs[0].bodyA;
+    let objB = pairs[0].bodyB;
+    let objALabel = pairs[0].bodyA.label;
+    let objBLabel = pairs[0].bodyB.label;
+
+    console.log("A:", objALabel, "B:", objBLabel);
+
+    if (objALabel === "pinball" && objBLabel === "bumper") {
+      objB.render.fillStyle = "white";
+      dispatch({ type: "updateScore" });
+    }
+
+    if (objALabel === "pinball" && objBLabel === "BoundaryB") {
+      console.log("GameOver. should prompt reset");
+    }
+  });
+
   // Tapping the ball
   touches
     .filter((t) => t.type === "press")

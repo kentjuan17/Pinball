@@ -30,9 +30,9 @@ export default (world, color, pos, radius, extraOptions) => {
     label: "bumper",
     isStatic: true,
     render: {
-      fillStyle: Color.BUMPER,
+      fillStyle: color,
     },
-    restitution: Constants.BUMPER_BOUNCE,
+    restitution: 1,
   });
   Matter.World.add(world, bumper);
   return { body: bumper, color, radius, extraOptions, renderer: <Bumper /> };

@@ -5,9 +5,7 @@ import Constants from "../Constants";
 import Images from "../Images";
 import RigidBody from "../components/RigidBody";
 import Paths from "../Paths";
-import Poly from "../Poly";
 import Bumper from "../components/Bumper";
-import Triangle from "../components/Triangle";
 import Square from "../components/Square";
 import Wall from "../components/Wall";
 
@@ -28,6 +26,7 @@ export default (gameWorld) => {
       14,
       {
         label: "pinball",
+        restitution: 0.8,
       }
     ),
 
@@ -46,24 +45,17 @@ export default (gameWorld) => {
     ),
 
     // Bumpers
-    LeftBumper: Bumper(world, "blue", { x: 60, y: 90 }, 25),
-    RightBumper: Bumper(
+    BumperUpperLeft: Bumper(world, "blue", { x: 70, y: 80 }, 20),
+    BumperUpperRight: Bumper(world, "blue", { x: 240, y: 150 }, 20),
+    BumperMiddleLeft: Bumper(world, "green", { x: 120, y: 220 }, 20),
+    BumperMiddleRight: Bumper(world, "green", { x: 250, y: 300 }, 20),
+    BumperLowerLeft: Bumper(world, "purple", { x: 80, y: 360 }, 20),
+    BumperLowerRight: Bumper(
       world,
-      "blue",
-      { x: Constants.SCREEN_WIDTH / 2, y: 90 },
-      25
+      "purple",
+      { x: Constants.SCREEN_WIDTH / 2, y: 450 },
+      20
     ),
-
-    // Wall
-    // Wall1: Wall(
-    //   world,
-    //   "green",
-    //   { x: 150, y: 150 },
-    //   { width: 100, height: 40 },
-    //   {
-    //     angle: 20,
-    //   }
-    // ),
 
     // Wall
     WallExit: Square(
@@ -122,8 +114,8 @@ export default (gameWorld) => {
     BottomStickShortestRight: Square(
       world,
       "gray",
-      { x: Constants.SCREEN_WIDTH - 160, y: Constants.SCREEN_HEIGHT - 200 },
-      { width: 10, height: 20 },
+      { x: Constants.SCREEN_WIDTH - 160, y: Constants.SCREEN_HEIGHT - 180 },
+      { width: 10, height: 60 },
       { label: "stick-right-tall" }
     ),
 
@@ -153,8 +145,8 @@ export default (gameWorld) => {
     BottomStickShortestLeft: Square(
       world,
       "gray",
-      { x: 90, y: Constants.SCREEN_HEIGHT - 200 },
-      { width: 10, height: 20 },
+      { x: 90, y: Constants.SCREEN_HEIGHT - 180 },
+      { width: 10, height: 60 },
       { label: "stick-Left-tall" }
     ),
 

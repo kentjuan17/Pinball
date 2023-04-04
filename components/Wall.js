@@ -25,7 +25,6 @@ const Wall = (props) => {
 
 export default (world, color, pos, size, extraOptions) => {
   const wall = Matter.Bodies.rectangle(pos.x, pos.y, size.width, size.height, {
-    angle: extraOptions.angle,
     isStatic: true,
     chamfer: { radius: 10 },
     render: {

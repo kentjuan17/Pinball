@@ -9,6 +9,9 @@ import Images from "./Images";
 
 export default function App() {
   const [running, setRunning] = useState(false);
+  const [score, setScore] = useState(0);
+  const [gameEngine, setGameEngine] = useState(null);
+
   useEffect(() => {
     setRunning(true);
   }, []);
@@ -21,13 +24,35 @@ export default function App() {
         resizeMode="stretch"
       />
       <GameEngine
+        ref={(ref) => setGameEngine(ref)}
         systems={[Physics]}
         entities={entities()}
         running={running}
+        onEvent={(e) => {
+          if (e.type === "updateScore") {
+            setScore(score + 10);
+          }
+        }}
         style={styles.gameContainer}
       >
         {<StatusBar style="auto" hidden={true} />}
       </GameEngine>
+      {/* Score */}
+      <Text
+        style={{
+          textAlign: "center",
+          fontSize: 20,
+          fontWeight: "bold",
+          position: "absolute",
+          left: 0,
+          top: 0,
+          backgroundColor: "gray",
+          color: "white",
+          padding: 10,
+        }}
+      >
+        Score: {score}
+      </Text>
     </View>
   );
 }
