@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import Constants from "./Constants";
 import Images from "./Images";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import launchPinball from "./functions/launchPinball";
 
 export default function App() {
   const [running, setRunning] = useState(false);
@@ -69,10 +70,7 @@ export default function App() {
         Score: {score}
       </Text>
       {/* Pause/Play button */}
-      <TouchableOpacity
-        style={styles.pausePlayButton}
-        onPress={toggleRunning}
-      >
+      <TouchableOpacity style={styles.pausePlayButton} onPress={toggleRunning}>
         <FontAwesome
           name={running ? "pause" : "play"}
           size={30}
@@ -84,6 +82,29 @@ export default function App() {
           <Text style={styles.startButtonText}>Start</Text>
         </TouchableOpacity>
       )}
+
+      {/* Buttons */}
+      <View style={styles.controlRow}>
+        <TouchableOpacity
+          onPress={() => {
+            gameEngine.dispatch({ type: "move-left" });
+          }}
+        >
+          <View style={styles.control}>
+            <Text style={styles.centerText}>←</Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => {
+            gameEngine.dispatch({ type: "move-right" });
+          }}
+        >
+          <View style={styles.control}>
+            <Text style={styles.centerText}>→</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -101,6 +122,32 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     bottom: 0,
+  },
+  control: {
+    elevation: 3,
+    backgroundColor: "orange",
+    paddingVertical: 4,
+    paddingHorizontal: 20,
+  },
+  /*controls:{
+    position: "absolute",
+    top: 400,
+  },*/
+  controlRow: {
+    flexDirection: "row",
+    position: "absolute",
+    bottom: 0,
+  },
+
+  centerText: {
+    paddingBottom: 5,
+    paddingLeft: 5,
+    paddingRight: 5,
+    paddingTop: 5,
+    marginBottom: 5,
+    marginLeft: 10,
+    fontWeight: "bold",
+    fontSize: 29,
   },
   backgroundImage: {
     position: "absolute",

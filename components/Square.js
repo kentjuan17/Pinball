@@ -32,7 +32,7 @@ export default (world, color, pos, size, extraOptions) => {
     size.height,
     {
       label: extraOptions.label,
-      isStatic: true,
+      isStatic: extraOptions.isStatic,
       render: {
         fillStyle: Color.BACKGROUND,
       },
