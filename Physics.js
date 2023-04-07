@@ -36,6 +36,7 @@ const Physics = (entities, { touches, events, dispatch, time }) => {
     if (objALabel === "pinball" && objBLabel === "BoundaryB") {
       console.log("GameOver. should prompt reset");
       launchPinball(entities.Pinball.body);
+      dispatch({ type: "restart" });
     }
   });
 
