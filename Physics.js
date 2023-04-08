@@ -32,7 +32,7 @@ const Physics = (entities, { touches, events, dispatch, time }) => {
     if (objALabel === "pinball" && objBLabel === "bumper") {
       objB.render.fillStyle = "white";
       // console.log("A:", objALabel, "B:", objBLabel);
-      // dispatch({ type: "updateScore" });
+      dispatch({ type: "updateScore" });
     }
 
     if (objALabel === "pinball" && objBLabel === "BoundaryB") {
@@ -44,7 +44,7 @@ const Physics = (entities, { touches, events, dispatch, time }) => {
     if (objALabel === "pinball" && objBLabel === "stopper") {
       Matter.Body.setVelocity(objA, {
         x: 0,
-        y: 25,
+        y: randomBetween(-30, -10),
       });
     }
   });
@@ -54,7 +54,7 @@ const Physics = (entities, { touches, events, dispatch, time }) => {
     .filter((t) => t.type === "press")
     .forEach((t) => {
       // Pinball Launch
-      launchPinball(entities.Pinball.body);
+      // launchPinball(entities.Pinball.body);
     });
 
   Matter.Engine.update(engine, time.delta);
