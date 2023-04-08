@@ -1,7 +1,6 @@
 import Matter from "matter-js";
 import React from "react";
-import { Dimensions, View } from "react-native";
-import Color from "../Color";
+import { View } from "react-native";
 
 const Boundary = (props) => {
   const width = props.body.bounds.max.x - props.body.bounds.min.x;
@@ -33,9 +32,6 @@ export default (world, color, pos, size, extraOptions) => {
     {
       label: extraOptions.label,
       isStatic: true,
-      render: {
-        fillStyle: Color.BACKGROUND,
-      },
     }
   );
 

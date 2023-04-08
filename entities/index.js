@@ -19,7 +19,7 @@ export default (gameWorld) => {
 
     Pinball: Ball(
       world,
-      "red",
+      "",
       { x: Constants.SCREEN_WIDTH - 30, y: Constants.SCREEN_HEIGHT - 160 },
       14,
       {
@@ -44,14 +44,14 @@ export default (gameWorld) => {
     ),
 
     // Bumpers
-    BumperUpperLeft: Bumper(world, "blue", { x: 70, y: 80 }, 20),
-    BumperUpperRight: Bumper(world, "blue", { x: 240, y: 150 }, 20),
-    BumperMiddleLeft: Bumper(world, "green", { x: 120, y: 220 }, 20),
-    BumperMiddleRight: Bumper(world, "green", { x: 250, y: 300 }, 20),
-    BumperLowerLeft: Bumper(world, "purple", { x: 80, y: 360 }, 20),
+    BumperUpperLeft: Bumper(world, "", { x: 70, y: 80 }, 20),
+    BumperUpperRight: Bumper(world, "", { x: 240, y: 150 }, 20),
+    BumperMiddleLeft: Bumper(world, "", { x: 120, y: 220 }, 20),
+    BumperMiddleRight: Bumper(world, "", { x: 250, y: 300 }, 20),
+    BumperLowerLeft: Bumper(world, "", { x: 80, y: 360 }, 20),
     BumperLowerRight: Bumper(
       world,
-      "purple",
+      "",
       { x: Constants.SCREEN_WIDTH / 2, y: 450 },
       20
     ),
@@ -99,127 +99,12 @@ export default (gameWorld) => {
       { label: "wall-exit", isStatic: true }
     ),
 
-    // Bottom Objects (Left and Right)
-    // BottomRectRight: Square(
-    //   world,
-    //   "gray",
-    //   {
-    //     x: Constants.SCREEN_WIDTH - 135,
-    //     y: Constants.SCREEN_HEIGHT - 100,
-    //   },
-    //   { width: 120, height: 100 },
-    //   { label: "rect-bottom-right" }
-    // ),
-    // BottomRectLeft: Square(
-    //   world,
-    //   "gray",
-    //   {
-    //     x: 65,
-    //     y: Constants.SCREEN_HEIGHT - 100,
-    //   },
-    //   { width: 120, height: 100 },
-    //   { label: "rect-bottom-left" }
-    // ),
-
-    // // Bottom Sticks Right
-    // SquareStopperRight: Square(
-    //   world,
-    //   "gray",
-    //   {
-    //     x: Constants.SCREEN_WIDTH - 80,
-    //     y: Constants.SCREEN_HEIGHT - 280,
-    //   },
-    //   {
-    //     width: 10,
-    //     height: 10,
-    //   },
-    //   {
-    //     label: "stopper-right",
-    //   }
-    // ),
-
-    // BottomStickTallRight: Square(
-    //   world,
-    //   "gray",
-    //   { x: Constants.SCREEN_WIDTH - 100, y: Constants.SCREEN_HEIGHT - 200 },
-    //   { width: 10, height: 140 },
-    //   { label: "stick-right-tall" }
-    // ),
-
-    // BottomStickMediumRight: Square(
-    //   world,
-    //   "gray",
-    //   { x: Constants.SCREEN_WIDTH - 120, y: Constants.SCREEN_HEIGHT - 200 },
-    //   { width: 10, height: 100 },
-    //   { label: "stick-right-tall" }
-    // ),
-    // BottomStickShortRight: Square(
-    //   world,
-    //   "gray",
-    //   { x: Constants.SCREEN_WIDTH - 140, y: Constants.SCREEN_HEIGHT - 200 },
-    //   { width: 10, height: 60 },
-    //   { label: "stick-right-tall" }
-    // ),
-    // BottomStickShortestRight: Square(
-    //   world,
-    //   "gray",
-    //   { x: Constants.SCREEN_WIDTH - 160, y: Constants.SCREEN_HEIGHT - 180 },
-    //   { width: 10, height: 60 },
-    //   { label: "stick-right-tall" }
-    // ),
-
-    // Bottom Sticks Left
-    // SquareStopperLeft: Square(
-    //   world,
-    //   "gray",
-    //   {
-    //     x: 14,
-    //     y: Constants.SCREEN_HEIGHT - 280,
-    //   },
-    //   {
-    //     width: 10,
-    //     height: 10,
-    //   },
-    //   {
-    //     label: "stopper-right",
-    //   }
-    // ),
-    // BottomStickTallLeft: Square(
-    //   world,
-    //   "gray",
-    //   { x: 30, y: Constants.SCREEN_HEIGHT - 200 },
-    //   { width: 10, height: 140 },
-    //   { label: "stick-Left-tall" }
-    // ),
-
-    // BottomStickMediumLeft: Square(
-    //   world,
-    //   "gray",
-    //   { x: 50, y: Constants.SCREEN_HEIGHT - 200 },
-    //   { width: 10, height: 100 },
-    //   { label: "stick-Left-tall" }
-    // ),
-    // BottomStickShortLeft: Square(
-    //   world,
-    //   "gray",
-    //   { x: 70, y: Constants.SCREEN_HEIGHT - 200 },
-    //   { width: 10, height: 60 },
-    //   { label: "stick-Left-tall" }
-    // ),
-    // BottomStickShortestLeft: Square(
-    //   world,
-    //   "gray",
-    //   { x: 90, y: Constants.SCREEN_HEIGHT - 180 },
-    //   { width: 10, height: 60 },
-    //   { label: "stick-Left-tall" }
-    // ),
-
     // Edges
     BoundaryB: Boundary(
       world,
       "gray",
-      { x: Constants.WINDOW_WIDTH / 2, y: Constants.WINDOW_HEIGHT - 60 },
-      { width: Constants.WINDOW_WIDTH, height: 20 },
+      { x: Constants.WINDOW_WIDTH / 2, y: Constants.WINDOW_HEIGHT - 30 },
+      { width: Constants.WINDOW_WIDTH, height: 70 },
       { isStatic: true, label: "BoundaryB" }
     ),
 

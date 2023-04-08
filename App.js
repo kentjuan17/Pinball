@@ -7,7 +7,6 @@ import React, { useState } from "react";
 import Constants from "./Constants";
 import Images from "./Images";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import launchPinball from "./functions/launchPinball";
 
 export default function App() {
   const [running, setRunning] = useState(false);
@@ -18,6 +17,7 @@ export default function App() {
   const startGame = () => {
     setRunning(true);
     setInitialLoad(false);
+    setScore(0);
   };
 
   const toggleRunning = () => {
@@ -37,10 +37,6 @@ export default function App() {
         entities={entities()}
         running={running}
         onEvent={(e) => {
-          if (e.type === "gameOver") {
-            setRunning(false);
-            setInitialLoad(false);
-          }
           if (e.type === "updateScore") {
             setScore(score + 10);
           }
@@ -129,10 +125,6 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     paddingHorizontal: 20,
   },
-  /*controls:{
-    position: "absolute",
-    top: 400,
-  },*/
   controlRow: {
     flexDirection: "row",
     position: "absolute",

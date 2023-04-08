@@ -1,8 +1,6 @@
-import { View, Image } from "react-native";
+import { Image } from "react-native";
 import Matter from "matter-js";
-import Color from "../Color";
-import Constants from "../Constants";
-//import Images from "../Images";
+import Images from "../Images";
 
 const Bumper = (props) => {
   const width = props.radius * 2;
@@ -11,7 +9,7 @@ const Bumper = (props) => {
   const y = props.body.position.y - width / 2;
 
   return (
-    <View
+    <Image
       style={{
         width: width,
         height: width,
@@ -21,6 +19,8 @@ const Bumper = (props) => {
         borderRadius: props.radius,
         backgroundColor: props.color,
       }}
+      resizeMode="stretch"
+      source={Images.Bumper}
     />
   );
 };

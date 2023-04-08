@@ -1,6 +1,6 @@
-import { View, Image } from "react-native";
+import { Image } from "react-native";
 import Matter from "matter-js";
-import Color from "../Color";
+import Images from "../Images";
 
 const Ball = (props) => {
   const width = props.radius * 2;
@@ -9,7 +9,7 @@ const Ball = (props) => {
   const y = props.body.position.y - width / 2;
 
   return (
-    <View
+    <Image
       style={{
         width: width,
         height: width,
@@ -17,8 +17,11 @@ const Ball = (props) => {
         top: y,
         position: "absolute",
         borderRadius: props.radius,
+        borderWidth: 0,
         backgroundColor: props.color,
       }}
+      resizeMode="stretch"
+      source={Images.Pinball}
     />
   );
 };
@@ -27,14 +30,7 @@ export default (world, color, pos, radius, extraOptions) => {
   const theCircle = Matter.Bodies.circle(pos.x, pos.y, radius, {
     label: extraOptions.label,
     restitution: extraOptions.restitution,
-    collisionFilter: {
-      // group: stopperGroup,
-    },
-    render: {
-      fillStyle: Color.PINBALL,
-    },
   });
   Matter.World.add(world, theCircle);
   return { body: theCircle, color, radius, extraOptions, renderer: <Ball /> };
 };
-1;

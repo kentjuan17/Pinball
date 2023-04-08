@@ -1,13 +1,9 @@
 import Matter, { Sleeping } from "matter-js";
-import Constants from "./Constants";
-import entities from "./entities";
 import launchPinball from "./functions/launchPinball";
 import randomBetween from "./functions/randomBetween";
 
 const Physics = (entities, { touches, events, dispatch, time }) => {
   let engine = entities.physics.engine;
-
-  // launchPinball(entities.Pinball.body);
 
   // Moving Left and Right Buttons
   if (events.length) {
@@ -31,12 +27,10 @@ const Physics = (entities, { touches, events, dispatch, time }) => {
 
     if (objALabel === "pinball" && objBLabel === "bumper") {
       objB.render.fillStyle = "white";
-      // console.log("A:", objALabel, "B:", objBLabel);
       dispatch({ type: "updateScore" });
     }
 
     if (objALabel === "pinball" && objBLabel === "BoundaryB") {
-      // console.log("GameOver. should prompt reset");
       launchPinball(entities.Pinball.body);
       dispatch({ type: "restart" });
     }
@@ -44,7 +38,7 @@ const Physics = (entities, { touches, events, dispatch, time }) => {
     if (objALabel === "pinball" && objBLabel === "stopper") {
       Matter.Body.setVelocity(objA, {
         x: 0,
-        y: randomBetween(-30, -10),
+        y: randomBetween(-35, -20),
       });
     }
   });
@@ -54,7 +48,7 @@ const Physics = (entities, { touches, events, dispatch, time }) => {
     .filter((t) => t.type === "press")
     .forEach((t) => {
       // Pinball Launch
-      // launchPinball(entities.Pinball.body);
+      launchPinball(entities.Pinball.body);
     });
 
   Matter.Engine.update(engine, time.delta);
