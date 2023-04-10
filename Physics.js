@@ -32,7 +32,7 @@ const Physics = (entities, { touches, events, dispatch, time }) => {
 
     if (objALabel === "pinball" && objBLabel === "BoundaryB") {
       launchPinball(entities.Pinball.body);
-      dispatch({ type: "restart" });
+      dispatch({ type: "gameOver" });
     }
 
     if (objALabel === "pinball" && objBLabel === "stopper") {

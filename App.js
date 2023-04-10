@@ -13,15 +13,26 @@ export default function App() {
   const [initialLoad, setInitialLoad] = useState(true);
   const [score, setScore] = useState(0);
   const [gameEngine, setGameEngine] = useState(null);
+  const [gameOver, setGameOver] = useState(false);
 
   const startGame = () => {
     setRunning(true);
     setInitialLoad(false);
+    setGameOver(false);
     setScore(0);
   };
 
   const toggleRunning = () => {
     setRunning(!running);
+  };
+
+  const gameOverHandler = () => {
+    setGameOver(true);
+    setRunning(false);
+    setTimeout(() => {
+      setInitialLoad(true);
+      setGameOver(false); // Hide the game over text
+    }, 3000); // Show the start game button after 3 seconds
   };
 
   return (
@@ -43,6 +54,9 @@ export default function App() {
           if (e.type === "restart") {
             setRunning(false);
             setInitialLoad(true);
+          }
+          if (e.type === "gameOver") {
+            gameOverHandler();
           }
         }}
         style={styles.gameContainer}
@@ -77,6 +91,14 @@ export default function App() {
         <TouchableOpacity style={styles.startButton} onPress={startGame}>
           <Text style={styles.startButtonText}>Start</Text>
         </TouchableOpacity>
+      )}
+
+      {/* Game Over text and score */}
+      {gameOver && (
+        <View style={styles.gameOverContainer}>
+          <Text style={styles.gameOverText}>Game Over</Text>
+          <Text style={styles.gameOverScore}>Score: {score}</Text>
+        </View>
       )}
 
       {/* Buttons */}
@@ -178,5 +200,26 @@ const styles = StyleSheet.create({
     fontSize: 29,
     color: "white",
     textAlign: "center",
+  },
+  gameOverContainer: {
+    position: "absolute",
+    top: "40%",
+    left: 0,
+    right: 0,
+    alignItems: "center",
+    backgroundColor: "white"
+  },
+  gameOverText: {
+    textAlign: "center",
+    fontSize: 40,
+    fontWeight: "bold",
+    color: "red",
+  },
+  gameOverScore: {
+    textAlign: "center",
+    fontSize: 30,
+    fontWeight: "bold",
+    color: "black",
+    marginTop: 10,
   },
 });
